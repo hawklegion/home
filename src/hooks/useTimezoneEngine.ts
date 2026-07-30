@@ -30,10 +30,20 @@ export function useTimezoneEngine() {
   const offsetLabel = formatOffset(effectiveOffset)
   const isManual = manualOffset !== null
 
+  const adjustOffset = useCallback((deltaMinutes: number) => {
+    setManualOffset(prev => {
+      const base = prev ?? autoOffset
+      const next = Math.round(base + deltaMinutes)
+      localStorage.setItem(STORAGE_KEY, String(next))
+      return next
+    })
+  }, [autoOffset])
+
   const calculateOffset = useCallback((userDate: Date) => {
     const now = Date.now()
     const diffMs = userDate.getTime() - now
-    const diffMinutes = Math.round(diffMs / 60000)
+    const rawMinutes = diffMs / 60000
+    const diffMinutes = Math.round(rawMinutes / 30) * 30
     setManualOffset(diffMinutes)
     localStorage.setItem(STORAGE_KEY, String(diffMinutes))
   }, [])
@@ -49,6 +59,7 @@ export function useTimezoneEngine() {
     isManual,
     modalOpen,
     setModalOpen,
+    adjustOffset,
     calculateOffset,
     resetToAuto,
   } as const

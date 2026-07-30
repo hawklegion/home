@@ -31,16 +31,16 @@
 }
 
 .dark {
-  --overlay-stop-1: rgba(0, 0, 0, 0.88);
-  --overlay-stop-2: rgba(0, 0, 0, 0.65);
-  --overlay-stop-3: rgba(0, 0, 0, 0.10);
-  --text-primary: #F3F4F6;
-  --text-secondary: rgba(243, 244, 246, 0.6);
-  --surface-card: #1F2128;
-  --surface-card-border: rgba(212, 175, 55, 0.12);
-  --input-bg: rgba(31, 33, 40, 0.8);
-  --input-border: rgba(212, 175, 55, 0.20);
-  --shadow-card: rgba(212, 175, 55, 0.04);
+  --overlay-stop-1: rgba(0, 0, 0, 0.965);
+  --overlay-stop-2: rgba(0, 0, 0, 0.80);
+  --overlay-stop-3: rgba(0, 0, 0, 0.20);
+  --text-primary: #E5E7EB;
+  --text-secondary: rgba(229, 231, 235, 0.55);
+  --surface-card: #16181F;
+  --surface-card-border: rgba(212, 175, 55, 0.10);
+  --input-bg: rgba(22, 24, 31, 0.85);
+  --input-border: rgba(212, 175, 55, 0.18);
+  --shadow-card: rgba(212, 175, 55, 0.035);
 }
 
 html {
