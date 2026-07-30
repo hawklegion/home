@@ -20,7 +20,7 @@ const NAV = [
 export default function Sidebar({ open, onClose }: SidebarProps) {
   const pathname = usePathname()
   const stats = useGuildStats()
-  const { mode, toggle } = useTheme()
+  const { mode, resolved, toggle } = useTheme()
 
   useEffect(() => {
     if (!open) return
@@ -61,7 +61,6 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
               src="/logo.png"
               alt="Hawk Legion"
               className="w-9 h-9 rounded-xl object-contain"
-              style={{ boxShadow: "0 0 20px rgba(212,175,55,0.4)" }}
             />
             <span className="font-heading text-lg font-bold" style={{ color: "var(--text-primary)" }}>
               Hawk Legion
@@ -116,29 +115,37 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <div style={{ flex: 1 }} />
 
         <div
-          className="rounded-xl p-3 mb-2 flex items-center justify-between"
+          className="rounded-xl p-3 flex items-center justify-between"
           style={{
             background: "rgba(255,255,255,0.03)",
             border: "1px solid var(--surface-card-border)",
           }}
         >
-          <span className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>
-            {mode === "system" ? "System" : mode === "light" ? "Light" : "Dark"}
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>
+              {mode === "system" ? "System" : mode === "light" ? "Light" : "Dark"}
+            </span>
+            {mode === "system" && (
+              <span className="text-[9px]" style={{ color: "var(--text-secondary)", opacity: 0.55 }}>
+                Detected: {resolved === "dark" ? "Dark" : "Light"}
+              </span>
+            )}
+          </div>
           <button
             onClick={toggle}
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 hover:bg-white/10"
             title={`Current: ${mode}`}
           >
             {mode === "system" ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--text-secondary)" }}>
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-                <circle cx="12" cy="10" r="3" />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20.5 12.8c-.35 4.14-3.68 7.5-7.82 7.8-4.14.35-7.8-2.82-8.16-6.96C4.18 9 5.5 5.61 8.17 3.75" />
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                <path d="M11.5 12.8 11.5 4.75" />
+                <path d="M16.93 16.93 11.48 11.48" />
+                <path d="M4.22 4.22l5.45 5.45" />
               </svg>
             ) : mode === "light" ? (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#D4AF37" }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="5" />
                 <line x1="12" y1="1" x2="12" y2="3" />
                 <line x1="12" y1="21" x2="12" y2="23" />
@@ -150,7 +157,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
               </svg>
             ) : (
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#D4AF37" }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
               </svg>
             )}
@@ -165,10 +172,11 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           }}
         >
           <div
-            className="text-[10.5px] uppercase tracking-wider font-bold mb-2"
+            className="flex items-center gap-2 text-[10.5px] uppercase tracking-wider font-bold mb-2"
             style={{ color: "var(--text-secondary)" }}
           >
-            Counter
+            Live Counter
+            <span className="w-2 h-2 rounded-full" style={{ background: "#36f59a", animation: "pulse-dot 1.6s ease-in-out infinite" }} />
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2.5 text-sm" style={{ color: "var(--text-primary)" }}>

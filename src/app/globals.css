@@ -157,6 +157,11 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
 @keyframes dust-float {
   0% { transform: translateY(0); opacity: 0; }
   10% { opacity: 1; }
