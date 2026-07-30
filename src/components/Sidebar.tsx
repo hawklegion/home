@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { X, Home, Clock, Sun, Moon, Monitor } from "lucide-react"
+import { X, Home, Clock } from "lucide-react"
 import { useGuildStats } from "@/hooks/useGuildStats"
 import { useTheme } from "./ThemeProvider"
 
@@ -116,61 +116,45 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <div style={{ flex: 1 }} />
 
         <div
-          className="rounded-xl p-3 mb-2"
+          className="rounded-xl p-3 mb-2 flex items-center justify-between"
           style={{
             background: "rgba(255,255,255,0.03)",
             border: "1px solid var(--surface-card-border)",
           }}
         >
-          <div
-            className="text-[10.5px] uppercase tracking-wider font-bold mb-2"
-            style={{ color: "var(--text-secondary)" }}
+          <span className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>
+            {mode === "system" ? "System" : mode === "light" ? "Light" : "Dark"}
+          </span>
+          <button
+            onClick={toggle}
+            className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 hover:bg-white/10"
+            title={`Current: ${mode}`}
           >
-            Theme
-          </div>
-          <div className="flex gap-1.5">
-            {(["light", "dark", "system"] as const).map(t => (
-              <button
-                key={t}
-                onClick={mode === t ? undefined : toggle}
-                className="flex-1 flex items-center justify-center gap-1 py-2 rounded-lg text-xs font-semibold transition-all duration-200"
-                style={{
-                  background: mode === t
-                    ? "linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.06))"
-                    : "transparent",
-                  border: mode === t ? "1px solid rgba(212,175,55,0.3)" : "1px solid var(--surface-card-border)",
-                  color: mode === t ? "#D4AF37" : "var(--text-secondary)",
-                  cursor: "pointer",
-                }}
-                onMouseEnter={e => {
-                  if (mode !== t) {
-                    e.currentTarget.style.color = "var(--text-primary)"
-                    e.currentTarget.style.borderColor = "rgba(212,175,55,0.2)"
-                    e.currentTarget.style.background = "rgba(255,255,255,0.03)"
-                  }
-                }}
-                onMouseLeave={e => {
-                  if (mode !== t) {
-                    e.currentTarget.style.color = "var(--text-secondary)"
-                    e.currentTarget.style.borderColor = "var(--surface-card-border)"
-                    e.currentTarget.style.background = "transparent"
-                  }
-                }}
-              >
-                {t === "light" && <Sun className="w-3.5 h-3.5" />}
-                {t === "dark" && <Moon className="w-3.5 h-3.5" />}
-                {t === "system" && (
-                  <span className="relative w-3.5 h-3.5">
-                    <Sun className="w-3.5 h-3.5 absolute top-0 left-0" style={{ clipPath: "inset(0 50% 0 0)" }} />
-                    <Moon className="w-3.5 h-3.5 absolute top-0 right-0" style={{ clipPath: "inset(0 0 0 50%)" }} />
-                  </span>
-                )}
-                {t === "light" && "Light"}
-                {t === "dark" && "Dark"}
-                {t === "system" && "System"}
-              </button>
-            ))}
-          </div>
+            {mode === "system" ? (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "var(--text-secondary)" }}>
+                <rect x="2" y="3" width="20" height="14" rx="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            ) : mode === "light" ? (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#D4AF37" }}>
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+            ) : (
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ color: "#D4AF37" }}>
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+              </svg>
+            )}
+          </button>
         </div>
 
         <div
