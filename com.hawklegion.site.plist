@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.hawklegion.site</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/npx</string>
+        <string>next</string>
+        <string>dev</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/nxco/Desktop/Discord Project/Hawk Legion/hawklegion</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/hawklegion-logs/stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/hawklegion-logs/stderr.log</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin</string>
+    </dict>
+</dict>
+</plist>

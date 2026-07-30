@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#F4E0A5"/>
+      <stop offset="100%" stop-color="#AA7A1E"/>
+    </linearGradient>
+    <linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8C6D23"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <!-- Shield -->
+  <path d="M256 32 L440 112 L440 280 Q440 400 256 480 Q72 400 72 280 L72 112 Z"
+        fill="url(#g)" stroke="#8C6D23" stroke-width="8"/>
+  <!-- Shield inner border -->
+  <path d="M256 60 L412 130 L412 270 Q412 380 256 450 Q100 380 100 270 L100 130 Z"
+        fill="none" stroke="#AA7A1E" stroke-width="3" opacity="0.6"/>
+  <!-- Wings -->
+  <path d="M72 160 Q20 140 8 200 Q0 240 40 260 Q60 268 72 260"
+        fill="url(#g)" stroke="#8C6D23" stroke-width="4"/>
+  <path d="M440 160 Q492 140 504 200 Q512 240 472 260 Q452 268 440 260"
+        fill="url(#g)" stroke="#8C6D23" stroke-width="4"/>
+  <!-- Sword -->
+  <rect x="248" y="160" width="16" height="180" rx="3" fill="#F4E0A5" stroke="#8C6D23" stroke-width="3"/>
+  <!-- Sword crossguard -->
+  <rect x="228" y="170" width="56" height="10" rx="2" fill="url(#sg)"/>
+  <!-- Sword pommel -->
+  <circle cx="256" cy="345" r="8" fill="url(#sg)" stroke="#8C6D23" stroke-width="2"/>
+  <!-- Sword tip -->
+  <polygon points="256,150 244,170 268,170" fill="#F4E0A5" stroke="#8C6D23" stroke-width="2"/>
+  <!-- Center gem/rune -->
+  <circle cx="256" cy="240" r="18" fill="#FDFBF7" stroke="#D4AF37" stroke-width="3"/>
+  <circle cx="256" cy="240" r="10" fill="url(#g)"/>
+  <!-- Runes -->
+  <text x="256" y="316" text-anchor="middle" font-family="serif" font-size="20" font-weight="bold" fill="#D4AF37">ᚻ</text>
+  <text x="310" y="200" text-anchor="middle" font-family="serif" font-size="16" font-weight="bold" fill="#D4AF37" opacity="0.7">ᛚ</text>
+  <text x="200" y="200" text-anchor="middle" font-family="serif" font-size="16" font-weight="bold" fill="#D4AF37" opacity="0.7">ᚨ</text>
+</svg>

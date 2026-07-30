@@ -1,0 +1,118 @@
+#!/bin/bash
+
+PROJECT_DIR="/Users/nxco/Desktop/Discord Project/Hawk Legion/hawklegion"
+PLIST_LABEL="com.hawklegion.site"
+PLIST_PATH="$HOME/Library/LaunchAgents/$PLIST_LABEL.plist"
+
+SITE_PLIST="$PROJECT_DIR/com.hawklegion.site.plist"
+LOG_DIR="/tmp/hawklegion-logs"
+
+ensure_logs() {
+    mkdir -p "$LOG_DIR"
+}
+
+install_plist() {
+    mkdir -p "$HOME/Library/LaunchAgents"
+    cp "$SITE_PLIST" "$PLIST_PATH"
+}
+
+is_running() {
+    launchctl list "$PLIST_LABEL" &>/dev/null
+    return $?
+}
+
+get_pid() {
+    launchctl list "$PLIST_LABEL" 2>/dev/null | grep '"PID"' | awk -F'= ' '{print $2}' | tr -d ';'
+}
+
+case "${1:-help}" in
+    start)
+        if is_running; then
+            echo "HawkLegion site is already running"
+            exit 0
+        fi
+        ensure_logs
+        install_plist
+        launchctl load "$PLIST_PATH"
+        echo "HawkLegion site started (http://localhost:3000)"
+        ;;
+
+    stop)
+        if ! is_running; then
+            echo "HawkLegion site is not running"
+            exit 0
+        fi
+        echo "Stopping HawkLegion site..."
+        PID=$(get_pid)
+        launchctl unload "$PLIST_PATH" 2>/dev/null
+        if [ -n "$PID" ]; then
+            for _ in 1 2 3 4 5 6 7 8 9 10; do
+                if ! kill -0 "$PID" 2>/dev/null; then
+                    break
+                fi
+                sleep 1
+            done
+            kill -9 "$PID" 2>/dev/null
+        fi
+        echo "HawkLegion site stopped"
+        ;;
+
+    restart)
+        echo "Restarting HawkLegion site..."
+        if is_running; then
+            PID=$(get_pid)
+            launchctl unload "$PLIST_PATH" 2>/dev/null
+            if [ -n "$PID" ]; then
+                for _ in 1 2 3 4 5 6 7 8 9 10; do
+                    if ! kill -0 "$PID" 2>/dev/null; then
+                        break
+                    fi
+                    sleep 1
+                done
+                kill -9 "$PID" 2>/dev/null
+            fi
+            sleep 1
+        fi
+        ensure_logs
+        install_plist
+        launchctl load "$PLIST_PATH"
+        echo "HawkLegion site restarted"
+        ;;
+
+    dev)
+        echo "Starting HawkLegion site in dev mode (Ctrl+C to stop)..."
+        echo "─────────────────────────────────────────────────────"
+        cd "$PROJECT_DIR" && npx nodemon --watch src --watch .hawklegion-restart --ext ts,tsx,css --exec "next dev" 2>&1
+        ;;
+
+    status)
+        if is_running; then
+            PID=$(get_pid)
+            echo "HawkLegion site is running (PID: ${PID:-unknown})"
+        else
+            echo "HawkLegion site is stopped"
+        fi
+        ;;
+
+    logs)
+        echo "HawkLegion Site Logs — Ctrl+C to stop"
+        echo "─────────────────────────────────────"
+        (tail -qf "$LOG_DIR/stdout.log" "$LOG_DIR/stderr.log" 2>/dev/null) \
+          | grep --line-buffered -vE '(Error: Not implemented|experimental|Warning:)'
+        ;;
+
+    help|*)
+        echo "HawkLegion — Site Manager"
+        echo ""
+        echo "Usage: hawklegion <command>"
+        echo ""
+        echo "Commands:"
+        echo "  start         Start the site daemon (launchd)"
+        echo "  stop          Stop the site daemon"
+        echo "  restart       Restart the site daemon"
+        echo "  dev           Run in dev mode (terminal, Ctrl+C to stop)"
+        echo "  status        Show if the site is running"
+        echo "  logs          Live log viewer"
+        echo "  help          Show this help message"
+        ;;
+esac
