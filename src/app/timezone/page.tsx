@@ -33,13 +33,12 @@ export default function TimezonePage() {
       <SacredBackground />
 
       <main className="flex-1 flex flex-col items-center justify-center px-4 pt-14 pb-4 relative z-10 max-w-7xl mx-auto w-full overflow-hidden" style={{ height: "100dvh" }}>
-        <div className="flex flex-col items-center animate-gold-bloom text-center">
+        <div className="flex flex-col items-center animate-fade-in-up text-center">
           <div className="relative mb-2">
-            <div className="absolute inset-0 rounded-full bg-[#D4AF37]/20 blur-3xl scale-150" />
             <img
               src="/logo.png"
               alt="Hawk Legion Sacred Emblem"
-              className="w-24 h-24 md:w-28 md:h-28 object-contain relative z-10 drop-shadow-[0_12px_24px_rgba(212,175,55,0.35)]"
+              className="w-24 h-24 md:w-28 md:h-28 object-contain relative z-10"
             />
           </div>
           <h1 className="font-heading text-2xl md:text-3xl font-bold tracking-[0.2em] drop-shadow-sm" style={{ color: "var(--text-primary)" }}>
@@ -52,18 +51,13 @@ export default function TimezonePage() {
           </p>
         </div>
 
-        <div className="w-full max-w-md relative animate-sunburst mt-4 mb-3">
+        <div className="w-full max-w-md relative animate-fade-in-up mt-4 mb-3" style={{ animationDelay: "0.15s", animationFillMode: "backwards" }}>
           <div
-            className="relative backdrop-blur-xl rounded-2xl p-7 md:p-8 card-glow"
+            className="relative backdrop-blur-xl rounded-2xl p-7 md:p-8 card-hover-lift"
             style={{
               background: "var(--surface-card)",
-              border: "1px solid rgba(212, 175, 55, 0.4)",
-              boxShadow: `
-                0 0 0 1px rgba(212, 175, 55, 0.15),
-                inset 0 0 0 1px rgba(212, 175, 55, 0.08),
-                0 4px 24px rgba(212, 175, 55, 0.08),
-                0 20px 64px rgba(212, 175, 55, 0.06)
-              `,
+              border: "1px solid var(--surface-card-border)",
+              boxShadow: "0 4px 24px var(--shadow-card), 0 20px 64px var(--shadow-card)",
             }}
           >
             <div className="absolute -top-[1px] -left-[1px] w-7 h-7 rounded-tl-xl pointer-events-none" style={{ borderTop: "2px solid rgba(212, 175, 55, 0.6)", borderLeft: "2px solid rgba(212, 175, 55, 0.6)" }} />
@@ -115,10 +109,10 @@ export default function TimezonePage() {
           </div>
         </div>
 
-        <div className="w-full max-w-md text-center">
-          <div className="flex items-center justify-center gap-3 text-[10px] md:text-xs" style={{ color: "var(--text-secondary)" }}>
+        <div className="w-full max-w-md text-center animate-fade-in-up" style={{ animationDelay: "0.3s", animationFillMode: "backwards" }}>
+          <div className="flex items-center justify-center gap-3 text-[10px] md:text-xs">
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
-            <span className="font-heading font-semibold tracking-[0.15em] flex items-center gap-1.5">
+            <span className="font-heading font-semibold tracking-[0.15em] flex items-center gap-1.5" style={{ color: "#AA7A1E" }}>
               <span style={{ color: "#D4AF37" }}>❖</span> Provided by @nxco_1226 <span style={{ color: "#D4AF37" }}>❖</span>
             </span>
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />

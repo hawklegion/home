@@ -3,7 +3,6 @@ import { Cinzel, Inter, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import ToastContainer from "@/components/ui/Toast"
 import { ThemeProvider } from "@/components/ThemeProvider"
-import ThemeToggle from "@/components/ThemeToggle"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -70,7 +69,6 @@ export default function RootLayout({
           <main className="flex-1 flex flex-col z-10 relative">
             {children}
           </main>
-          <ThemeToggle />
           <ToastContainer />
         </ThemeProvider>
       </body>

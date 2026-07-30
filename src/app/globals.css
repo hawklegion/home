@@ -60,14 +60,23 @@ body {
 }
 
 @keyframes gold-bloom {
-  0% { opacity: 0; filter: blur(12px); transform: scale(0.96); }
-  100% { opacity: 1; filter: blur(0); transform: scale(1); }
+  0% { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @keyframes sunburst {
-  0% { opacity: 0; transform: scale(0.8); }
-  50% { opacity: 0.6; transform: scale(1.05); }
-  100% { opacity: 1; transform: scale(1); }
+  0% { opacity: 0; transform: scale(0.92) translateY(8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes card-lift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
 }
 
 @keyframes float-up {
@@ -168,4 +177,18 @@ input:focus {
 
 .animate-feather-float {
   animation: feather-float ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.card-hover-lift {
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 18px 50px rgba(212, 175, 55, 0.08);
 }
