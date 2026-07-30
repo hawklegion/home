@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 import { Cinzel, Inter, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import ToastContainer from "@/components/ui/Toast"
+import { ThemeProvider } from "@/components/ThemeProvider"
+import ThemeToggle from "@/components/ThemeToggle"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -42,25 +44,35 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cinzel.variable} ${inter.variable} ${plusJakarta.variable}`} suppressHydrationWarning>
-      <body className="font-sans min-h-screen flex flex-col text-[#111827]" suppressHydrationWarning>
-        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-          <img
-            src="/background.png"
-            alt=""
-            className="w-full h-full object-cover"
-            style={{ objectPosition: "center" }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.65) 65%, rgba(255,255,255,0.15) 100%)",
-            }}
-          />
-        </div>
-        <main className="flex-1 flex flex-col z-10 relative">
-          {children}
-        </main>
-        <ToastContainer />
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("hawklegion-theme")||"system";if(t==="dark"||(t==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches))document.documentElement.classList.add("dark")}catch(e){}})()`,
+          }}
+        />
+      </head>
+      <body className="font-sans min-h-screen flex flex-col" suppressHydrationWarning>
+        <ThemeProvider>
+          <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+            <img
+              src="/background.png"
+              alt=""
+              className="w-full h-full object-cover"
+              style={{ objectPosition: "center" }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background: "linear-gradient(180deg, var(--overlay-stop-1) 0%, var(--overlay-stop-2) 65%, var(--overlay-stop-3) 100%)",
+              }}
+            />
+          </div>
+          <main className="flex-1 flex flex-col z-10 relative">
+            {children}
+          </main>
+          <ThemeToggle />
+          <ToastContainer />
+        </ThemeProvider>
       </body>
     </html>
   )

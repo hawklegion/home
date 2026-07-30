@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-gold: #D4AF37;
   --color-gold-muted: #AA7A1E;
@@ -15,18 +17,46 @@
   --font-body: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
 }
 
+:root {
+  --overlay-stop-1: rgba(255, 255, 255, 0.95);
+  --overlay-stop-2: rgba(255, 255, 255, 0.65);
+  --overlay-stop-3: rgba(255, 255, 255, 0.15);
+  --text-primary: #111827;
+  --text-secondary: rgba(17, 24, 39, 0.7);
+  --surface-card: #FFFFFF;
+  --surface-card-border: rgba(212, 175, 55, 0.15);
+  --input-bg: rgba(253, 251, 247, 0.8);
+  --input-border: rgba(212, 175, 55, 0.25);
+  --shadow-card: rgba(212, 175, 55, 0.08);
+}
+
+.dark {
+  --overlay-stop-1: rgba(0, 0, 0, 0.88);
+  --overlay-stop-2: rgba(0, 0, 0, 0.65);
+  --overlay-stop-3: rgba(0, 0, 0, 0.10);
+  --text-primary: #F3F4F6;
+  --text-secondary: rgba(243, 244, 246, 0.6);
+  --surface-card: #1F2128;
+  --surface-card-border: rgba(212, 175, 55, 0.12);
+  --input-bg: rgba(31, 33, 40, 0.8);
+  --input-border: rgba(212, 175, 55, 0.20);
+  --shadow-card: rgba(212, 175, 55, 0.04);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  color: var(--color-dark);
+  color: var(--text-primary);
+  background-color: var(--surface-card);
   min-height: 100vh;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 ::selection {
   background-color: rgba(212, 175, 55, 0.25);
-  color: var(--color-dark);
+  color: var(--text-primary);
 }
 
 @keyframes gold-bloom {
@@ -91,8 +121,8 @@ body {
 }
 
 .input-gold {
-  border: 1px solid rgba(212, 175, 55, 0.25);
-  background: rgba(253, 251, 247, 0.8);
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
   transition: all 0.2s ease;
 }
 
@@ -104,12 +134,12 @@ body {
 
 .card-glow {
   box-shadow:
-    0 4px 24px rgba(212, 175, 55, 0.08),
-    0 20px 64px rgba(212, 175, 55, 0.06);
+    0 4px 24px var(--shadow-card),
+    0 20px 64px var(--shadow-card);
 }
 
 input::placeholder {
-  color: rgba(17, 24, 39, 0.3);
+  color: var(--text-secondary);
 }
 
 input:focus {
