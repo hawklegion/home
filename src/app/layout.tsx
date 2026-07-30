@@ -26,12 +26,12 @@ export const metadata: Metadata = {
   description: "Elite utilities crafted by the sacred order of Hawk Legion.",
   metadataBase: new URL("https://hawklegion.github.io/home"),
   icons: {
-    icon: "/icon.svg",
+    icon: "/logo.png",
   },
   openGraph: {
     title: "Hawk Legion — Sacred Utilities",
     description: "Elite utilities crafted by the sacred order of Hawk Legion.",
-    images: [{ url: "/icon.svg", width: 512, height: 512 }],
+    images: [{ url: "/logo.png", width: 512, height: 512 }],
   },
 }
 
