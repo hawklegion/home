@@ -88,7 +88,6 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
                   background: active
                     ? "linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.06))"
                     : "transparent",
-                  boxShadow: active ? "inset 0 0 0 1px rgba(212,175,55,0.3)" : "none",
                 }}
                 onMouseEnter={e => {
                   if (!active) {
@@ -122,11 +121,11 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           }}
         >
           <div className="flex flex-col leading-tight">
-            <span className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>
+            <span className="font-heading text-xs font-bold tracking-wider" style={{ color: "var(--text-secondary)" }}>
               {mode === "system" ? "System" : mode === "light" ? "Light" : "Dark"}
             </span>
             {mode === "system" && (
-              <span className="text-[9px]" style={{ color: "var(--text-secondary)", opacity: 0.55 }}>
+              <span className="font-heading text-[9px] tracking-wide" style={{ color: "var(--text-secondary)", opacity: 0.55 }}>
                 Detected: {resolved === "dark" ? "Dark" : "Light"}
               </span>
             )}
@@ -137,12 +136,18 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
             title={`Current: ${mode}`}
           >
             {mode === "system" ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20.5 12.8c-.35 4.14-3.68 7.5-7.82 7.8-4.14.35-7.8-2.82-8.16-6.96C4.18 9 5.5 5.61 8.17 3.75" />
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                <path d="M11.5 12.8 11.5 4.75" />
-                <path d="M16.93 16.93 11.48 11.48" />
-                <path d="M4.22 4.22l5.45 5.45" />
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <g stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}>
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </g>
+                <g stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}>
+                  <circle cx="8" cy="8" r="3" />
+                  <line x1="8" y1="1.5" x2="8" y2="3.5" />
+                  <line x1="2" y1="8" x2="3.5" y2="8" />
+                  <line x1="3.5" y1="3.5" x2="4.5" y2="4.5" />
+                  <line x1="12.5" y1="3.5" x2="11.5" y2="4.5" />
+                  <line x1="1.5" y1="12.5" x2="3.5" y2="11.5" />
+                </g>
               </svg>
             ) : mode === "light" ? (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -172,7 +177,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           }}
         >
           <div
-            className="flex items-center gap-2 text-[10.5px] uppercase tracking-wider font-bold mb-2"
+            className="flex items-center gap-2 font-heading text-[10.5px] uppercase tracking-wider font-bold mb-2"
             style={{ color: "var(--text-secondary)" }}
           >
             Live Counter
