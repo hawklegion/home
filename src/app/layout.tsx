@@ -24,7 +24,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Hawk Legion — Sacred Utilities",
   description: "Elite utilities crafted by the sacred order of Hawk Legion.",
-  metadataBase: new URL("https://hawklegion.github.io"),
+  metadataBase: new URL("https://heavenlydemon1226.github.io/hawklegion.github.io"),
   icons: {
     icon: "/icon.svg",
   },
