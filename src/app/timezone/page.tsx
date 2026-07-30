@@ -32,27 +32,27 @@ export default function TimezonePage() {
       <Header />
       <SacredBackground />
 
-      <main className="flex-1 flex flex-col items-center justify-start px-4 pt-20 pb-20 relative z-10 max-w-7xl mx-auto w-full overflow-hidden" style={{ height: "100dvh" }}>
-        <div className="flex flex-col items-center mt-6 mb-8 animate-gold-bloom text-center">
-          <div className="relative mb-4">
+      <main className="flex-1 flex flex-col items-center justify-center px-4 pt-14 pb-4 relative z-10 max-w-7xl mx-auto w-full overflow-hidden" style={{ height: "100dvh" }}>
+        <div className="flex flex-col items-center animate-gold-bloom text-center">
+          <div className="relative mb-2">
             <div className="absolute inset-0 rounded-full bg-[#D4AF37]/20 blur-3xl scale-150" />
             <img
               src="/logo.png"
               alt="Hawk Legion Sacred Emblem"
-              className="w-36 h-36 md:w-44 md:h-44 object-contain relative z-10 drop-shadow-[0_12px_24px_rgba(212,175,55,0.35)]"
+              className="w-24 h-24 md:w-28 md:h-28 object-contain relative z-10 drop-shadow-[0_12px_24px_rgba(212,175,55,0.35)]"
             />
           </div>
-          <h1 className="font-heading text-3xl md:text-5xl font-bold tracking-[0.2em] drop-shadow-sm" style={{ color: "var(--text-primary)" }}>
+          <h1 className="font-heading text-2xl md:text-3xl font-bold tracking-[0.2em] drop-shadow-sm" style={{ color: "var(--text-primary)" }}>
             HAWK LEGION
           </h1>
-          <p className="mt-2 text-xs md:text-sm text-[#AA7A1E] tracking-[0.35em] font-semibold uppercase">
+          <p className="mt-1 text-[10px] md:text-xs text-[#AA7A1E] tracking-[0.35em] font-semibold uppercase">
             {process.env.NODE_ENV === "development"
               ? "\u2022 Darkness leads the Blind. \u2022"
               : "\u2022 SACRED ORDER. ETERNAL PURPOSE. \u2022"}
           </p>
         </div>
 
-        <div className="w-full max-w-md relative animate-sunburst mb-12">
+        <div className="w-full max-w-md relative animate-sunburst mt-4 mb-3">
           <div
             className="relative backdrop-blur-xl rounded-2xl p-7 md:p-8 card-glow"
             style={{
@@ -115,11 +115,11 @@ export default function TimezonePage() {
           </div>
         </div>
 
-        <div className="w-full max-w-4xl my-8 text-center">
-          <div className="flex items-center justify-center gap-4 text-xs text-[#AA7A1E]/70">
+        <div className="w-full max-w-md text-center">
+          <div className="flex items-center justify-center gap-3 text-[10px] md:text-xs" style={{ color: "var(--text-secondary)" }}>
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
-            <span className="font-heading font-semibold tracking-[0.15em] flex items-center gap-2">
-              <span className="text-[#D4AF37]">❖</span> Provided by @nxco_1226 <span className="text-[#D4AF37]">❖</span>
+            <span className="font-heading font-semibold tracking-[0.15em] flex items-center gap-1.5">
+              <span style={{ color: "#D4AF37" }}>❖</span> Provided by @nxco_1226 <span style={{ color: "#D4AF37" }}>❖</span>
             </span>
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
           </div>
