@@ -132,7 +132,7 @@ export default function ArchiveStatusPage({
               className="group flex items-center gap-2.5 px-6 py-3 rounded-xl border border-[#D4AF37]/40 font-heading text-xs md:text-sm font-semibold tracking-[0.2em] uppercase transition-all duration-300 hover:border-[#D4AF37]/80 hover:bg-[#D4AF37]/10 hover:shadow-[0_0_28px_rgba(212,175,55,0.18)]"
               style={{ background: "var(--surface-card)", color: "var(--text-primary)" }}
             >
-              <Home className="w-4 h-4 text-[#D4AF37] transition-transform duration-300 group-hover:-translate-x-0.5" />
+              <Home className="w-4 h-4 text-[#D4AF37] transition-transform duration-300 group-hover:scale-110" />
               Return Home
             </Link>
             <a
@@ -151,7 +151,7 @@ export default function ArchiveStatusPage({
                 className="group flex items-center gap-2.5 px-6 py-3 rounded-xl border border-[#D4AF37]/40 font-heading text-xs md:text-sm font-semibold tracking-[0.2em] uppercase transition-all duration-300 hover:border-[#D4AF37]/80 hover:bg-[#D4AF37]/10 hover:shadow-[0_0_28px_rgba(212,175,55,0.18)]"
                 style={{ background: "var(--surface-card)", color: "var(--text-primary)" }}
               >
-                <RefreshCw className="w-4 h-4 text-[#D4AF37] transition-transform duration-300 group-hover:rotate-180" />
+                <RefreshCw className="w-4 h-4 text-[#D4AF37] transition-transform duration-300 group-hover:scale-110" />
                 Refresh
               </button>
             )}

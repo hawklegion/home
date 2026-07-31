@@ -103,7 +103,7 @@ export default function TimezonePage() {
                 className="group flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#D4AF37]/30 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/60 text-xs md:text-sm font-medium transition-all shadow-sm"
                 style={{ background: "var(--surface-card)", color: "var(--text-primary)" }}
               >
-                <ClockIcon className="w-4 h-4 text-[#D4AF37] group-hover:rotate-12 transition-transform" />
+                <ClockIcon className="w-4 h-4 text-[#D4AF37] transition-transform duration-300 group-hover:scale-110" />
                 My clock is wrong
               </button>
             </div>
