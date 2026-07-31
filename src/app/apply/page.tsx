@@ -196,7 +196,7 @@ export default function ApplyPage() {
 
                   <div className="mt-6 flex items-center gap-2">
                     <span className="font-heading text-[10px] font-bold tracking-[0.3em] uppercase" style={{ color: "#AA7A1E" }}>
-                      Requirements ({tier.name})
+                      Requirements
                     </span>
                     <span className="h-px flex-1 bg-gradient-to-r from-[#D4AF37]/30 to-transparent" />
                   </div>
