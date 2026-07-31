@@ -4,7 +4,7 @@ const DM_URL = "https://discord.com/users/1488246057782612139"
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 right-0 z-10 flex justify-center py-5 px-4">
+    <footer className="relative z-10 flex justify-center px-4 py-6 mt-auto">
       <a
         href={DM_URL}
         target="_blank"

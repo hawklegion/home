@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { X, Home, Clock } from "lucide-react"
+import { X, Home, Clock, FileText } from "lucide-react"
 import { useGuildStats } from "@/hooks/useGuildStats"
 import { useTheme } from "./ThemeProvider"
 import { asset } from "@/lib/asset"
@@ -15,6 +15,7 @@ interface SidebarProps {
 
 const NAV = [
   { href: "/", label: "Home", icon: Home },
+  { href: "/apply", label: "Apply", icon: FileText },
   { href: "/timezone", label: "Timezone", icon: Clock },
 ]
 

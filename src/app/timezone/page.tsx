@@ -33,7 +33,7 @@ export default function TimezonePage() {
       <Header />
       <SacredBackground />
 
-      <main className="flex-1 flex flex-col items-center justify-center px-4 pt-14 pb-4 relative z-10 max-w-7xl mx-auto w-full overflow-hidden" style={{ height: "100dvh" }}>
+      <main className="flex-1 flex flex-col items-center justify-center px-4 pt-14 pb-4 relative z-10 max-w-7xl mx-auto w-full overflow-hidden" style={{ height: "100%" }}>
         <div className="flex flex-col items-center animate-fade-in-up text-center">
           <div className="relative mb-2">
             <img

@@ -9,9 +9,10 @@ import { asset } from "@/lib/asset"
 const BREADCRUMB_MAP: Record<string, string> = {
   "/": "Home",
   "/timezone": "Timezone",
+  "/apply": "Apply",
 }
 
-const KNOWN_ROUTES = new Set(["/", "/timezone", "/401", "/403", "/500"])
+const KNOWN_ROUTES = new Set(["/", "/timezone", "/apply", "/401", "/403", "/500"])
 
 const ERROR_LABEL_MAP: Record<string, string> = {
   "/401": "Error 401",

@@ -45,7 +45,7 @@ export default function ArchiveStatusPage({
 
       <main
         className="flex-1 flex flex-col items-center justify-center px-4 pt-14 pb-6 relative z-10 overflow-hidden"
-        style={{ minHeight: "100dvh" }}
+        style={{ minHeight: "100%" }}
       >
         <div className="flex flex-col items-center text-center max-w-2xl animate-fade-in-up">
           {showEmblem && (

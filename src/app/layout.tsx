@@ -52,7 +52,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans min-h-screen flex flex-col" suppressHydrationWarning>
+      <body className="font-sans h-dvh overflow-hidden flex flex-col" suppressHydrationWarning>
         <ThemeProvider>
           <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
             <img
@@ -68,7 +68,7 @@ export default function RootLayout({
               }}
             />
           </div>
-          <main className="flex-1 flex flex-col z-10 relative">
+          <main className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden flex flex-col z-10 relative">
             {children}
           </main>
           <Footer />
