@@ -177,11 +177,11 @@ input:focus {
 }
 
 .animate-dust-float {
-  animation: dust-float ease-in-out infinite;
+  animation: dust-float ease-in-out infinite backwards;
 }
 
 .animate-feather-float {
-  animation: feather-float ease-in-out infinite;
+  animation: feather-float ease-in-out infinite backwards;
 }
 
 .animate-fade-in-up {

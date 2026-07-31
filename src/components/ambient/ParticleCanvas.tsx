@@ -11,6 +11,7 @@ interface Particle {
   alpha: number
   life: number
   maxLife: number
+  phase: number
   shape: "circle" | "feather"
 }
 
@@ -20,6 +21,16 @@ interface GodRay {
   alpha: number
   speed: number
   phase: number
+}
+
+function mulberry32(seed: number) {
+  let s = seed >>> 0
+  return () => {
+    s = (s + 0x6d2b79f5) | 0
+    let t = Math.imul(s ^ (s >>> 15), 1 | s)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
 }
 
 export default function ParticleCanvas() {
@@ -37,6 +48,10 @@ export default function ParticleCanvas() {
     const rays: GodRay[] = []
     let time = 0
 
+    const seed = (Date.now() ^ Math.floor(Math.random() * 0xffffffff)) >>> 0
+    const rand = mulberry32(seed)
+    const targetCount = 60 + Math.floor(rand() * 26)
+
     function resize() {
       if (!canvas) return
       canvas.width = window.innerWidth
@@ -46,32 +61,34 @@ export default function ParticleCanvas() {
     resize()
     window.addEventListener("resize", resize)
 
-    for (let i = 0; i < 8; i++) {
+    const rayCount = 6 + Math.floor(rand() * 5)
+    for (let i = 0; i < rayCount; i++) {
       rays.push({
-        x: Math.random() * canvas.width,
-        width: Math.random() * 120 + 40,
-        alpha: Math.random() * 0.06 + 0.02,
-        speed: Math.random() * 0.003 + 0.001,
-        phase: Math.random() * Math.PI * 2,
+        x: rand() * canvas.width,
+        width: rand() * 120 + 40,
+        alpha: rand() * 0.05 + 0.015,
+        speed: rand() * 0.003 + 0.001,
+        phase: rand() * Math.PI * 2,
       })
     }
 
-    for (let i = 0; i < 65; i++) {
-      particles.push(createParticle(canvas))
+    function createParticle(c: HTMLCanvasElement, staggerLife: boolean): Particle {
+      return {
+        x: rand() * c.width,
+        y: rand() * c.height,
+        vx: (rand() - 0.5) * 0.35,
+        vy: -rand() * 0.25 - 0.05,
+        size: rand() * 2.5 + 0.5,
+        alpha: rand() * 0.16 + 0.04,
+        life: staggerLife ? rand() * 350 : 0,
+        maxLife: rand() * 400 + 200,
+        phase: rand() * Math.PI * 2,
+        shape: rand() > 0.7 ? "feather" : "circle",
+      }
     }
 
-    function createParticle(c: HTMLCanvasElement): Particle {
-      return {
-        x: Math.random() * c.width,
-        y: Math.random() * c.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: -Math.random() * 0.25 - 0.05,
-        size: Math.random() * 2.5 + 0.5,
-        alpha: Math.random() * 0.4 + 0.08,
-        life: 0,
-        maxLife: Math.random() * 400 + 200,
-        shape: Math.random() > 0.7 ? "feather" : "circle",
-      }
+    for (let i = 0; i < targetCount; i++) {
+      particles.push(createParticle(canvas, true))
     }
 
     function drawFeather(c: CanvasRenderingContext2D, x: number, y: number, size: number, alpha: number) {
@@ -106,21 +123,26 @@ export default function ParticleCanvas() {
 
       // Particles
       particles = particles.filter((p) => p.life < p.maxLife)
-      while (particles.length < 75) {
-        particles.push(createParticle(canvas))
+      while (particles.length < targetCount) {
+        particles.push(createParticle(canvas, false))
       }
 
       for (const p of particles) {
-        p.x += p.vx
+        p.x += p.vx + Math.sin(time * 0.002 + p.phase) * 0.06
         p.y += p.vy
         p.life++
-        const fade = 1 - p.life / p.maxLife
+
+        const fadeIn = Math.min(p.life / 25, 1)
+        const fadeOut = 1 - p.life / p.maxLife
+        const alpha = p.alpha * fadeIn * fadeOut
+        if (alpha <= 0.004) continue
+
         if (p.shape === "feather") {
-          drawFeather(ctx, p.x, p.y, p.size, p.alpha * fade)
+          drawFeather(ctx, p.x, p.y, p.size, alpha)
         } else {
           ctx.beginPath()
           ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha * fade})`
+          ctx.fillStyle = `rgba(212, 175, 55, ${alpha})`
           ctx.fill()
         }
       }

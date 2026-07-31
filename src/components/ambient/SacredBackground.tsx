@@ -25,9 +25,6 @@ interface Feather {
   driftX: number
 }
 
-const DUST_COUNT = 35
-const FEATHER_COUNT = 7
-
 function seededRandom(seed: number) {
   let s = seed
   return () => {
@@ -40,8 +37,9 @@ export default function SacredBackground() {
   const mounted = useMounted()
 
   const dust = useMemo<Dust[]>(() => {
-    const rand = seededRandom(42)
-    return Array.from({ length: DUST_COUNT }, (_, i) => ({
+    const rand = seededRandom((Date.now() ^ Math.floor(Math.random() * 0xffffffff)) >>> 0)
+    const count = 28 + Math.floor(rand() * 14)
+    return Array.from({ length: count }, (_, i) => ({
       id: i,
       x: rand() * 100,
       y: rand() * 100,
@@ -54,8 +52,9 @@ export default function SacredBackground() {
   }, [])
 
   const feathers = useMemo<Feather[]>(() => {
-    const rand = seededRandom(42)
-    return Array.from({ length: FEATHER_COUNT }, (_, i) => ({
+    const rand = seededRandom((Date.now() ^ Math.floor(Math.random() * 0xffffffff)) >>> 0)
+    const count = 5 + Math.floor(rand() * 5)
+    return Array.from({ length: count }, (_, i) => ({
       id: i,
       x: rand() * 100,
       y: rand() * 100,

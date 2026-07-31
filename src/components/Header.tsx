@@ -35,7 +35,7 @@ export default function Header() {
     .split("/")
     .filter(Boolean)
     .map(seg => "/" + seg)
-  if (crumbs.length === 0) crumbs.push("/")
+  if (crumbs.length === 0 || crumbs[0] !== "/") crumbs.unshift("/")
 
   return (
     <>

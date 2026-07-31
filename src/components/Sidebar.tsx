@@ -138,19 +138,11 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
             title={`Current: ${mode}`}
           >
             {mode === "system" ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <g stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}>
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                </g>
-                <g stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}>
-                  <circle cx="8" cy="8" r="3" />
-                  <line x1="8" y1="1.5" x2="8" y2="3.5" />
-                  <line x1="2" y1="8" x2="3.5" y2="8" />
-                  <line x1="3.5" y1="3.5" x2="4.5" y2="4.5" />
-                  <line x1="12.5" y1="3.5" x2="11.5" y2="4.5" />
-                  <line x1="1.5" y1="12.5" x2="3.5" y2="11.5" />
-                </g>
-              </svg>
+              <img
+                src={asset("/sun-moon-logo.png")}
+                alt="System theme"
+                className="w-[26px] h-[26px] object-contain"
+              />
             ) : mode === "light" ? (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="5" />
