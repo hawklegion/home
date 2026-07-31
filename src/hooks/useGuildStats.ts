@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 
-const STATS_URL = "https://raw.githubusercontent.com/hawklegion/home/main/public/stats.json"
+const STATS_URL = "https://gist.githubusercontent.com/hawklegion/e8f66fb2c82612e21c8a4743ab1f407f/raw/stats.json"
 
 interface GuildStats {
   members: number
