@@ -25,15 +25,15 @@ const plusJakarta = Plus_Jakarta_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Hawk Legion — Sacred Utilities",
-  description: "Elite utilities crafted by the sacred order of Hawk Legion.",
+  title: "Hawk Legion — Darkness Leads the Blind.",
+  description: "Elite guild crafted by the sacred order of Hawk Legion.",
   metadataBase: new URL("https://hawklegion.github.io/home"),
   icons: {
     icon: asset("/logo.png"),
   },
   openGraph: {
-    title: "Hawk Legion — Sacred Utilities",
-    description: "Elite utilities crafted by the sacred order of Hawk Legion.",
+    title: "Hawk Legion — Darkness Leads the Blind.",
+    description: "Elite guild crafted by the sacred order of Hawk Legion.",
     images: [{ url: asset("/logo.png"), width: 512, height: 512 }],
   },
 }
