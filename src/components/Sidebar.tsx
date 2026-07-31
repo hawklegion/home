@@ -183,19 +183,30 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
             Live Counter
             <span className="w-2 h-2 rounded-full" style={{ background: "#36f59a", animation: "pulse-dot 1.6s ease-in-out infinite" }} />
           </div>
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2.5 text-sm" style={{ color: "var(--text-primary)" }}>
-              <span>👥</span>
-              <span>Members: {stats.members}</span>
-            </div>
-            <div className="flex items-center gap-2.5 text-sm" style={{ color: "var(--text-primary)" }}>
-              <span>🛡️</span>
-              <span>Guild: {stats.guild}</span>
-            </div>
-            <div className="flex items-center gap-2.5 text-sm" style={{ color: "var(--text-primary)" }}>
-              <span>⚜️</span>
-              <span>Elite: {stats.elite}</span>
-            </div>
+          <div className="flex flex-col gap-1.5">
+            {[
+              { icon: "👥", label: "Members", value: stats.members },
+              { icon: "🛡️", label: "Guild", value: stats.guild },
+              { icon: "⚜️", label: "Elite", value: stats.elite },
+            ].map(({ icon, label, value }) => (
+              <div key={label} className="flex items-center gap-2.5 text-sm" style={{ color: "var(--text-primary)" }}>
+                <span
+                  className="w-7 h-7 rounded-lg flex items-center justify-center text-[13px] shrink-0"
+                  style={{
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid var(--surface-card-border)",
+                  }}
+                >
+                  {icon}
+                </span>
+                <span className="text-xs font-medium" style={{ color: "var(--text-secondary)" }}>
+                  {label}
+                </span>
+                <span className="ml-auto text-sm font-bold tabular-nums" style={{ color: "#D4AF37" }}>
+                  {value}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

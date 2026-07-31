@@ -16,10 +16,10 @@ const ThemeContext = createContext<ThemeContextValue | null>(null)
 const STORAGE_KEY = "hawklegion-theme"
 
 function getStoredMode(): ThemeMode {
-  if (typeof window === "undefined") return "system"
+  if (typeof window === "undefined") return "dark"
   const stored = localStorage.getItem(STORAGE_KEY)
   if (stored === "light" || stored === "dark" || stored === "system") return stored
-  return "system"
+  return "dark"
 }
 
 function getSystemTheme(): ResolvedTheme {
@@ -33,7 +33,7 @@ function applyTheme(mode: ThemeMode) {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<ThemeMode>("system")
+  const [mode, setMode] = useState<ThemeMode>("dark")
   const [resolved, setResolved] = useState<ResolvedTheme>("light")
   const [mounted, setMounted] = useState(false)
 
