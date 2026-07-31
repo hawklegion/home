@@ -7,6 +7,7 @@ import { useLiveClock } from "@/hooks/useLiveClock"
 import TimeOverrideModal from "@/components/timezone/TimeOverrideModal"
 import { showToast } from "@/components/ui/Toast"
 import { Compass, Copy, Clock as ClockIcon } from "lucide-react"
+import { asset } from "@/lib/asset"
 
 export default function TimezonePage() {
   const {
@@ -36,7 +37,7 @@ export default function TimezonePage() {
         <div className="flex flex-col items-center animate-fade-in-up text-center">
           <div className="relative mb-2">
             <img
-              src="/logo.png"
+              src={asset("/logo.png")}
               alt="Hawk Legion Sacred Emblem"
               className="w-24 h-24 md:w-28 md:h-28 object-contain relative z-10"
             />

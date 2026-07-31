@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import Sidebar from "./Sidebar"
+import { asset } from "@/lib/asset"
 
 const BREADCRUMB_MAP: Record<string, string> = {
   "/": "Home",
@@ -41,7 +42,7 @@ export default function Header() {
             </button>
             <Link href="/" className="flex items-center gap-2 group">
               <img
-                src="/logo.png"
+                src={asset("/logo.png")}
                 alt="Hawk Legion Logo"
                 className="w-6 h-6 md:w-7 md:h-7 object-contain transition-transform duration-200 group-hover:scale-105 drop-shadow-sm"
               />

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import { X, Home, Clock } from "lucide-react"
 import { useGuildStats } from "@/hooks/useGuildStats"
 import { useTheme } from "./ThemeProvider"
+import { asset } from "@/lib/asset"
 
 interface SidebarProps {
   open: boolean
@@ -58,7 +59,7 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
         <div className="flex items-center justify-between mb-2" style={{ padding: "4px 8px 16px" }}>
           <div className="flex items-center gap-3">
             <img
-              src="/logo.png"
+              src={asset("/logo.png")}
               alt="Hawk Legion"
               className="w-9 h-9 rounded-xl object-contain"
             />

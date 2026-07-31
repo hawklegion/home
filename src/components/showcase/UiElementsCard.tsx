@@ -1,6 +1,7 @@
 "use client"
 
 import { Shield, Swords, Sparkles, Feather, Crown } from "lucide-react"
+import { asset } from "@/lib/asset"
 
 export default function UiElementsCard() {
   return (
@@ -50,7 +51,7 @@ export default function UiElementsCard() {
           </span>
           <div className="p-4 rounded-xl bg-white/70 border border-[#D4AF37]/30 shadow-sm text-center relative">
             <div className="flex justify-center mb-1.5">
-              <img src="/logo.png" alt="Card Logo" className="w-5 h-5 object-contain" />
+              <img src={asset("/logo.png")} alt="Card Logo" className="w-5 h-5 object-contain" />
             </div>
             <h4 className="font-heading text-xs font-bold text-[#111827] tracking-wider mb-1">
               Card Title

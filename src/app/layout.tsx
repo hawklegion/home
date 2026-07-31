@@ -3,6 +3,7 @@ import { Cinzel, Inter, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import ToastContainer from "@/components/ui/Toast"
 import { ThemeProvider } from "@/components/ThemeProvider"
+import { asset } from "@/lib/asset"
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -27,12 +28,12 @@ export const metadata: Metadata = {
   description: "Elite utilities crafted by the sacred order of Hawk Legion.",
   metadataBase: new URL("https://hawklegion.github.io/home"),
   icons: {
-    icon: "/logo.png",
+    icon: asset("/logo.png"),
   },
   openGraph: {
     title: "Hawk Legion — Sacred Utilities",
     description: "Elite utilities crafted by the sacred order of Hawk Legion.",
-    images: [{ url: "/logo.png", width: 512, height: 512 }],
+    images: [{ url: asset("/logo.png"), width: 512, height: 512 }],
   },
 }
 
@@ -54,7 +55,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
             <img
-              src="/background.png"
+              src={asset("/background.png")}
               alt=""
               className="w-full h-full object-cover"
               style={{ objectPosition: "center" }}
