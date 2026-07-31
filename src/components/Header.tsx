@@ -11,6 +11,21 @@ const BREADCRUMB_MAP: Record<string, string> = {
   "/timezone": "Timezone",
 }
 
+const KNOWN_ROUTES = new Set(["/", "/timezone", "/401", "/403", "/500"])
+
+const ERROR_LABEL_MAP: Record<string, string> = {
+  "/401": "Error 401",
+  "/403": "Error 403",
+  "/500": "Error 500",
+}
+
+function crumbLabel(crumb: string): string {
+  if (ERROR_LABEL_MAP[crumb]) return ERROR_LABEL_MAP[crumb]
+  if (BREADCRUMB_MAP[crumb]) return BREADCRUMB_MAP[crumb]
+  if (!KNOWN_ROUTES.has(crumb)) return "Error 404"
+  return crumb.slice(1)
+}
+
 export default function Header() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const pathname = usePathname()
@@ -58,7 +73,7 @@ export default function Header() {
                     href={crumb}
                     className="transition-colors duration-200 hover:text-[#D4AF37]"
                   >
-                    {BREADCRUMB_MAP[crumb] || crumb.slice(1)}
+                    {crumbLabel(crumb)}
                   </Link>
                 </span>
               ))}

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Cinzel, Inter, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import ToastContainer from "@/components/ui/Toast"
+import Footer from "@/components/Footer"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { asset } from "@/lib/asset"
 
@@ -70,6 +71,7 @@ export default function RootLayout({
           <main className="flex-1 flex flex-col z-10 relative">
             {children}
           </main>
+          <Footer />
           <ToastContainer />
         </ThemeProvider>
       </body>

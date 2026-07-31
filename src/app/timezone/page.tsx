@@ -110,15 +110,6 @@ export default function TimezonePage() {
           </div>
         </div>
 
-        <div className="w-full max-w-md text-center animate-fade-in-up" style={{ animationDelay: "0.3s", animationFillMode: "backwards" }}>
-          <div className="flex items-center justify-center gap-3 text-[10px] md:text-xs">
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
-            <span className="font-heading font-semibold tracking-[0.15em] flex items-center gap-1.5" style={{ color: "#AA7A1E" }}>
-              <span style={{ color: "#D4AF37" }}>❖</span> Provided by @nxco_1226 <span style={{ color: "#D4AF37" }}>❖</span>
-            </span>
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent" />
-          </div>
-        </div>
       </main>
 
       <TimeOverrideModal
